@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; 
+
+/* .box{
+    padding:2rem;
+    border:1px solid green;
+    background-color:gray;
+    color: white;
+} */
+ 

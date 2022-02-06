@@ -1,9 +1,11 @@
 module.exports = {
-    plugins: [
-      
-      require('tailwindcss'),
-      
-      require('autoprefixer'),
-      
-    ]
-  }
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx,html}",
+  ],
+  plugins: [
+    // ...
+    require('tailwindcss'),
+    require('autoprefixer'),
+    // ...
+  ]
+}

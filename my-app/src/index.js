@@ -4,4 +4,9 @@ import App from "./App";
 
 //const App = require("./App");
 
-ReactDOM.render(<App title="Heyy React Dev Tool"/>, document.getElementById("root"));
+ReactDOM.render(
+    <App title="Hello World"/>, document.getElementById("root")
+    
+    );
+
+   
