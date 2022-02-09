@@ -17,10 +17,16 @@ import "./assets/css/style.css"
     constructor(props){
         super(props);
         this.state={title: "Hello React 2", isShowing:false};
+        this.handleClick = this.handleClick.bind(this);
 
     }
 
-    handleClick = () => {
+    //Arrow function
+    /* handleClick = () => {
+        this.setState({isShowing: !this.state.isShowing})
+     } */
+
+    handleClick(){
         this.setState({isShowing: !this.state.isShowing})
      }
     // sates are immutable
