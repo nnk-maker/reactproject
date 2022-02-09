@@ -17,7 +17,7 @@ import Images from "./components/Images";
  
  class App extends React.Component{
     constructor(props){
-        console.log("App Constructor");
+       // console.log("App Constructor");
         super(props);
         this.state={title: "Hello React 2", isShowing:false};
       //  this.handleClick = this.handleClick.bind(this);
@@ -34,10 +34,10 @@ import Images from "./components/Images";
         // this.setState({title: "HelloLifeCycle"});
      }
 
-     componentWillUnmount(){
-        console.log ("App Unmounted");
+     componentDidUpdate(){
+         console.log("App Updated");
      }
-
+     
     handleClick = () =>{
         this.setState({isShowing: !this.state.isShowing})
      }
