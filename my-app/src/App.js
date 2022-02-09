@@ -1,5 +1,7 @@
 import React from "react";
 import "./assets/css/style.css"
+import Images from "./components/Images";
+
 
 
 
@@ -15,9 +17,10 @@ import "./assets/css/style.css"
  
  class App extends React.Component{
     constructor(props){
+        console.log("App Constructor");
         super(props);
         this.state={title: "Hello React 2", isShowing:false};
-        this.handleClick = this.handleClick.bind(this);
+      //  this.handleClick = this.handleClick.bind(this);
 
     }
 
@@ -26,11 +29,21 @@ import "./assets/css/style.css"
         this.setState({isShowing: !this.state.isShowing})
      } */
 
-    handleClick(){
+     componentDidMount() {
+         console.log("App Mounted");
+        // this.setState({title: "HelloLifeCycle"});
+     }
+
+     componentWillUnmount(){
+        console.log ("App Unmounted");
+     }
+
+    handleClick = () =>{
         this.setState({isShowing: !this.state.isShowing})
      }
     // sates are immutable
     render(){
+        console.log("App render");
         return(
             <section className="flex justify-center">
                     <div className="w-1/2">
@@ -46,7 +59,7 @@ import "./assets/css/style.css"
                         </div>
                         {
                             this.state.isShowing ? 
-                            ( <img src="https://images.unsplash.com/photo-1643685623589-625d36ffb709?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80" />) 
+                            ( <Images/> ) 
                             : null
                            
 
