@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./assets/css/style.css"
 import Images from "./components/Images";
 
@@ -8,10 +8,28 @@ import Images from "./components/Images";
  function App() {
     const [title, setTitle] = useState("Hellow React");
     const [isShowing, setIsShowing] = useState(false);
+    const [didMount, setdidMount] = useState(false);
+    const mountRef = useRef(false);
+
     //Compoenent Did mount only
     useEffect(() => {
+        setdidMount(true);
         console.log("App mounted");
     },[]);
+
+    //component will update
+
+    useEffect(() => {
+     //if(isShowing != null){
+      if(mountRef.current){    //if(didMount){
+        console.log("App Updated");
+      } else {
+        mountRef.current = true;
+      }
+      
+     //}
+      
+    },[isShowing]);
 
    function handleClick(){
         setIsShowing(!isShowing);
