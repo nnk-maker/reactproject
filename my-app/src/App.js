@@ -7,59 +7,18 @@ import Images from "./components/Images";
 
  function App() {
     const [title, setTitle] = useState("Hellow React");
-    const [isShowing, setIsShowing] = useState(false);
-    const [didMount, setdidMount] = useState(false);
-    const mountRef = useRef(false);
-
-    //Compoenent Did mount only
-    useEffect(() => {
-        setdidMount(true);
-        console.log("App mounted");
-    },[]);
-
-    //component will update
-
-    useEffect(() => {
-     //if(isShowing != null){
-      if(mountRef.current){    //if(didMount){
-        console.log("App Updated");
-      } else {
-        mountRef.current = true;
-      }
-      
-     //}
-      
-    },[isShowing]);
-
-   function handleClick(){
-        setIsShowing(!isShowing);
-       
-     }
-    
+          
     return (
         <section className="flex justify-center">
-            {console.log('re-render')}
+           
                     <div className="w-10/12">
                       <div className="text-center">
                         <div className="my-4">{title}</div>
                     
-                        <div>
-                           <button className="p-1 bg-blue-700 text-white my-2"
-                            onClick={handleClick}
-                            >Toggle Image
-                            </button>
-                           
-                        </div>
-                        {
-                            isShowing ? 
-                            ( <Images/> ) 
-                            : null
-                           
+                        <Images />
 
-                        }
-                        
                       </div>
-                     
+                      
                     </div>
             </section>
     )
