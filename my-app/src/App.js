@@ -39,7 +39,7 @@ import Images from "./components/Images";
     return (
         <section className="flex justify-center">
             {console.log('re-render')}
-                    <div className="w-1/2">
+                    <div className="w-10/12">
                       <div className="text-center">
                         <div className="my-4">{title}</div>
                     
