@@ -17,8 +17,8 @@ export default function Images() {
    function ShowImage(){
            return images.map(image => {
                 return(
-                    <div>
-                        <img src={image} width="150"/>
+                    <div className="w-1/3">
+                        <img src={image} width="150" />
                     </div>
                 );
             });
@@ -26,12 +26,13 @@ export default function Images() {
    }
 
    function handleAdd() {
-       let tempImage = [...images];
-       tempImage.push(
-        "https://images.unsplash.com/photo-1644869432047-fa8bdbe849cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+       
+       setimages([
+        "https://images.unsplash.com/photo-1644869432047-fa8bdbe849cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+
+        ...images,
+    ]
        );
-       console.log(tempImage);
-       setimages(tempImage);
        //images.push();
        //console.log(tempImage);
 
@@ -40,7 +41,7 @@ export default function Images() {
    
   return (
     <section>
-        <div className="flex justify-center">    
+        <div className="flex flex-wrap justify-center">    
               <ShowImage />  
         </div>
               <div className="flex justify-between my-5">
