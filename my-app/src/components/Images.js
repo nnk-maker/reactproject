@@ -1,5 +1,5 @@
 import React, { PureComponent, useEffect, useState } from 'react';
-
+import Image from './Image';
 
 
 export default function Images() {
@@ -25,32 +25,27 @@ export default function Images() {
        setimages([...images.slice(0,index), ...images.slice(index+1, images.length)]);
    }
 
-   const [isHovering, setIsHovering] = useState(false);
+  
 
-   function handleMouseEnter(e) {
+   /* function handleMouseEnter() {
        //console.log(e.target);
        setIsHovering(true);
-   }
+   } */
 
-   function crossClass() {
+   /* function crossClass() {
         return `fas fa-times absolute right-0 cursor-pointer opacity-25 hover:opacity-100 ${
             isHovering ? "" : "hidden"
         }`;
-   }
+   } */
+
+   /* function handleMouseLeave() {
+
+    setIsHovering(false);
+       
+   } */
 
    function ShowImage(){
-           return images.map((image,index) => {
-                return(
-                    <div className="w-1/3 my-4 flex justify-center" key={index}>
-                        <div className="relative">
-                            <i className={crossClass()} 
-                                onClick={()=>handleRemove(index)} ></i>
-                            <img src={image} width="150" onMouseEnter={handleMouseEnter}/>
-                        </div>
-                        
-                    </div>
-                );
-            });
+           return images.map((img,index) => <Image image={img} handleRemove={handleRemove}  index={index}/>);
 
    }
 
