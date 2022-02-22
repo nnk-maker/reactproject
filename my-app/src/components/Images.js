@@ -15,15 +15,23 @@ export default function Images() {
     ]);
 
 const inputRef = useRef(null);
+const varRef = useRef(images.length);
 
     useEffect(()=>{
             inputRef.current.focus()
-           // const inputBox = document.getElementById('inputBox');
-            //inputBox.focus();
-            //console.log(inputRef.current);
-           // console.log("this is useEfct");
+           
+           console.log(varRef);
     
-    },[])
+    },[]);
+
+    //const [updateCount, setupdateCount] = useState(0);
+    useEffect(()=>{
+        varRef.current =  varRef.current  + 1;
+        //setupdateCount(updateCount + 1);
+        //varRef.current = images.length;
+       // console.log("count");
+
+    });
 
     const [newImageUrl, setNewImageUrl] = useState("");
     
@@ -80,6 +88,8 @@ const inputRef = useRef(null);
    
   return (
     <section>
+       {/*  <h1>{varRef.current} Images</h1> */}
+        <p>component is updated {varRef.current} times</p>
         <div className="flex flex-wrap justify-center">    
               <ShowImage />  
         </div>
