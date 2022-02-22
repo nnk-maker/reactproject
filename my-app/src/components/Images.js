@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect, useState } from 'react';
+import React, { PureComponent, useEffect, useRef, useState } from 'react';
 import Image from './Image';
 
 
@@ -14,8 +14,19 @@ export default function Images() {
 
     ]);
 
+const inputRef = useRef(null);
+
+    useEffect(()=>{
+            inputRef.current.focus()
+           // const inputBox = document.getElementById('inputBox');
+            //inputBox.focus();
+            //console.log(inputRef.current);
+           // console.log("this is useEfct");
+    
+    },[])
 
     const [newImageUrl, setNewImageUrl] = useState("");
+    
 
    function handleRemove(index) {
       // console.log(images.filter((image,i) => i != index));
@@ -45,7 +56,7 @@ export default function Images() {
    } */
 
    function ShowImage(){
-           return images.map((img,index) => <Image image={img} handleRemove={handleRemove}  index={index}/>);
+           return images.map((img,index) => <Image image={img} handleRemove={handleRemove}  index={index} key={index}/>);
 
    }
 
@@ -74,7 +85,10 @@ export default function Images() {
         </div>
               <div className="flex justify-between my-5">
                 <div className="w-full">
-                    <input type="text" className="p-2 border border-gray-800 shadow rounded w-full"
+                    <input type="text" 
+                    id="inputBox"
+                    ref={inputRef}
+                    className="p-2 border border-gray-800 shadow rounded w-full"
                     value={newImageUrl}
                     onChange = {handleChange}
                     />
