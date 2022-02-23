@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect, useRef, useState } from 'react';
+import React, { PureComponent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from './Image';
 
 
@@ -20,7 +20,7 @@ const varRef = useRef(images.length);
     useEffect(()=>{
             inputRef.current.focus()
            
-           console.log(varRef);
+          // console.log(varRef);
     
     },[]);
 
@@ -33,6 +33,18 @@ const varRef = useRef(images.length);
 
     });
 
+    useEffect(()=>{
+
+        console.log("I am use effect 1");
+       
+    });
+
+    useLayoutEffect(()=>{
+
+        console.log("I am use effect 2");
+       
+    });
+
     const [newImageUrl, setNewImageUrl] = useState("");
     
 
@@ -40,8 +52,13 @@ const varRef = useRef(images.length);
       // console.log(images.filter((image,i) => i != index));
        //setimages(images.filter((image,i) => i != index));
 
-       console.log([...images.slice(0,index), ...images.slice(index+1, images.length)]);
-       setimages([...images.slice(0,index), ...images.slice(index+1, images.length)]);
+      // console.log([...images.slice(0,index), ...images.slice(index+1, images.length)]);
+       setimages([
+           ...images.slice(0,index), 
+           ...images.slice(index+1, 
+            images.length)]);
+
+        console.log("I am changing state");
    }
 
   
@@ -89,6 +106,7 @@ const varRef = useRef(images.length);
   return (
     <section>
        {/*  <h1>{varRef.current} Images</h1> */}
+       {console.log("I am jsx")}
         <p>component is updated {varRef.current} times</p>
         <div className="flex flex-wrap justify-center">    
               <ShowImage />  
