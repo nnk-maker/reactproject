@@ -1,25 +1,22 @@
+import  Axios  from "axios";
 import React, { PureComponent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from './Image';
 
 
 export default function Images() {
     
-    const [images, setimages] = useState([
-        "https://images.unsplash.com/photo-1643685623589-625d36ffb709?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80",
-    "https://images.unsplash.com/photo-1644866679372-11af353e9b0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    "https://images.unsplash.com/photo-1644866679372-11af353e9b0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    "https://images.unsplash.com/photo-1644871829528-20cc68a1bf17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    "https://images.unsplash.com/photo-1587870306141-4f19861e6c73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=415&q=80"
-
-
-    ]);
+    const [images, setimages] = useState([ ]);
 
 const inputRef = useRef(null);
 const varRef = useRef(images.length);
-
+const axios = require('axios');
     useEffect(()=>{
-            inputRef.current.focus()
-           
+           inputRef.current.focus()
+           Axios.get("https://api.unsplash.com/photos/?client_id=Q6F2UZogduuqcTc6rRGUs6ZOIo8yhNIpP4tiJHm0CrE")
+           .then(res => {
+               setimages(res.data);
+               //console.log(res.data);
+           } );
           // console.log(varRef);
     
     },[]);
@@ -83,7 +80,13 @@ const varRef = useRef(images.length);
    } */
 
    function ShowImage(){
-           return images.map((img,index) => <Image image={img} handleRemove={handleRemove}  index={index} key={index}/>);
+           return images.map((img,index) => ( 
+                <Image 
+                    image={img.urls.regular} 
+                    handleRemove={handleRemove}  
+                    index={index} 
+                    key={index}/>
+                ));
 
    }
 
