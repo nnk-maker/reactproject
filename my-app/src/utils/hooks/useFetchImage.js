@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import Axios from "axios";
 import React, { useEffect, useState } from 'react'
 
@@ -12,7 +13,7 @@ export default function useFetchImage(page) {
         Axios.get(
             `${url}?client_id=${secret}&page=${page}`)
         .then(res => {
-            setImages(res.data);
+            setImages([...images, ...res.data]);
             //console.log(res.data);
         } );
 
