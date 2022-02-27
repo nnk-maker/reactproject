@@ -8,6 +8,7 @@ const secret = process.env.REACT_APP_UNSPLASH_KEY
 export default function useFetchImage(page) {
 
     const[images, setImages] = useState([]);
+    const[errors, setErrors] = useState([]);
 
     useEffect( () => {
         Axios.get(
@@ -15,13 +16,15 @@ export default function useFetchImage(page) {
         .then(res => {
             setImages([...images, ...res.data]);
             //console.log(res.data);
-        } );
+        } ).catch((e) => {
+                setErrors(e.response.data.errors);
+        });
 
     }, [page])
   
    
 
-    return [images, setImages];
+    return [images, setImages, errors];
     
 
 

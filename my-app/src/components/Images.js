@@ -1,7 +1,7 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import useFetchImage from "../utils/hooks/useFetchImage";
-import useScroll from "../utils/hooks/useScroll";
+//import useScroll from "../utils/hooks/useScroll";
 import Image from './Image';
 
 
@@ -9,24 +9,24 @@ export default function Images() {
     
     //const [images, setimages] = useState([ ]);
     const [page, setPage] = useState(1);
-    const [images, setImages] = useFetchImage(page);
+    const [images, setImages, errors] = useFetchImage(page);
     // const scrollPosition = useScroll();
-    const inputRef = useRef(null);
+   // const inputRef = useRef(null);
 
 
 
-    useEffect(()=>{
+   /*  useEffect(()=>{
            inputRef.current.focus();
             // console.log(process.env);
             
            // console.log(varRef);
     
-    },[]);
+    },[]); */
 
     
 
     
-    const [newImageUrl, setNewImageUrl] = useState("");
+    //const [newImageUrl, setNewImageUrl] = useState("");
     
 
    function handleRemove(index) {
@@ -50,7 +50,7 @@ export default function Images() {
 
    }
 
-   function handleAdd() {
+  /*  function handleAdd() {
        
        if(newImageUrl != ""){
             setImages([newImageUrl, ...images,]);
@@ -61,21 +61,33 @@ export default function Images() {
        //console.log(tempImage);
 
    }
-
-   function handleChange(event) {
+ */
+   /* function handleChange(event) {
        setNewImageUrl(event.target.value);
        //console.log(event.target.value);
-   }
+   } */
 
    
   return (
     <section>
+        {
+            errors.length > 0 ? 
+            <div className="flex h-screen">
+            <p className="m-auto">{errors[0]}</p>
+ 
+        </div> : null
+        }
        {/* {scrollPosition} */} 
+      
+       
         <div className="gap-0" style={{ columnCount: 5 }}>    
               <ShowImage />  
         </div>
-        <button onClick={()=>{setPage(page + 1)}}>Load More</button>
-              <div className="flex justify-between my-5">
+        {
+            errors.length > 0 ? null : <button onClick={()=>{setPage(page + 1)}}>Load More</button>
+        }
+        
+             {/*  <div className="flex justify-between my-5">
                 <div className="w-full">
                     <input type="text" 
                     id="inputBox"
@@ -92,7 +104,7 @@ export default function Images() {
                             className= {`p-2 text-white ml-2 ${newImageUrl != "" ? "bg-green-600": "bg-green-300"}`} 
                             onClick={handleAdd}>Add</button>
                     </div>    
-              </div>   
+              </div>    */}
                        
        
 
