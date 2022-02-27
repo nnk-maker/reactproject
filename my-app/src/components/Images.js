@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import useFetchImage from "../utils/hooks/useFetchImage";
 //import useScroll from "../utils/hooks/useScroll";
 import Image from './Image';
+import Loading from './Loading';
 
 
 export default function Images() {
@@ -32,15 +33,11 @@ export default function Images() {
 
    }
 
- 
+ if(isLoading) 
+    return <Loading/>
   
    
-  return isLoading ?  
-    <div className="flex h-screen">
-        <p className="m-auto">
-            <i className="fas fa-circle-notch fa-spin text-5xl text-yellow-400"/>
-        </p>
-    </div> : (
+  return (
     <section>
         {
             errors.length > 0 &&
