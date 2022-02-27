@@ -87,6 +87,7 @@ export default function Images() {
             errors.length === 0 && (
                 <button onClick={()=>{setPage(page + 1)}}>Load More</button>
                 )
+                
         }
         
              {/*  <div className="flex justify-between my-5">
