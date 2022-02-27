@@ -9,7 +9,7 @@ export default function Images() {
     
     
     const [page, setPage] = useState(1);
-    const [images, setImages, errors] = useFetchImage(page);
+    const [images, setImages, errors, isLoading] = useFetchImage(page);
     
    function handleRemove(index) {
            setImages([
@@ -33,15 +33,21 @@ export default function Images() {
    }
 
  
+  
    
-  return (
+  return isLoading ?  
+    <div className="flex h-screen">
+        <p className="m-auto">
+            <i className="fas fa-circle-notch fa-spin text-5xl text-yellow-400"/>
+        </p>
+    </div> : (
     <section>
         {
             errors.length > 0 &&
             <div className="flex h-screen">
-            <p className="m-auto">{errors[0]}</p>
+                <p className="m-auto">{errors[0]}</p>
  
-        </div>
+            </div>
         }
        {/* {scrollPosition} */} 
       
