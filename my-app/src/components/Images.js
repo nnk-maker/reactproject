@@ -84,7 +84,9 @@ export default function Images() {
               <ShowImage />  
         </div>
         {
-            errors.length > 0 ? null : <button onClick={()=>{setPage(page + 1)}}>Load More</button>
+            errors.length === 0 && (
+                <button onClick={()=>{setPage(page + 1)}}>Load More</button>
+                )
         }
         
              {/*  <div className="flex justify-between my-5">
