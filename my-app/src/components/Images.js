@@ -71,11 +71,11 @@ export default function Images() {
   return (
     <section>
         {
-            errors.length > 0 ? 
+            errors.length > 0 &&
             <div className="flex h-screen">
             <p className="m-auto">{errors[0]}</p>
  
-        </div> : null
+        </div>
         }
        {/* {scrollPosition} */} 
       
