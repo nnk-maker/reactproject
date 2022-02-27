@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useFetchImage from "../utils/hooks/useFetchImage";
+import useScroll from '../utils/hooks/useScroll';
 //import useScroll from "../utils/hooks/useScroll";
 import Image from './Image';
 import Loading from './Loading';
@@ -11,6 +12,18 @@ export default function Images() {
     
     const [page, setPage] = useState(1);
     const [images, setImages, errors, isLoading] = useFetchImage(page);
+    const scrollPosition = useScroll();
+
+    useEffect(() => {
+        if(scrollPosition >= document.body.offsetHeight - window.innerHeight){
+            setPage(page + 1);
+        }
+        /* console.log(
+            scrollPosition, 
+            window.innerHeight, 
+            document.body.offsetHeight); */
+       
+    }, [scrollPosition]);
     
    function handleRemove(index) {
            setImages([
@@ -49,7 +62,7 @@ export default function Images() {
        {/* {scrollPosition} */} 
       
        
-        <div className="gap-0" style={{ columnCount: 5 }}>    
+        <div className="flex flex-wrap" >    
               <ShowImage />  
         </div>
         {
