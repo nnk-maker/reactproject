@@ -7,28 +7,10 @@ import Image from './Image';
 
 export default function Images() {
     
-    //const [images, setimages] = useState([ ]);
+    
     const [page, setPage] = useState(1);
     const [images, setImages, errors] = useFetchImage(page);
-    // const scrollPosition = useScroll();
-   // const inputRef = useRef(null);
-
-
-
-   /*  useEffect(()=>{
-           inputRef.current.focus();
-            // console.log(process.env);
-            
-           // console.log(varRef);
     
-    },[]); */
-
-    
-
-    
-    //const [newImageUrl, setNewImageUrl] = useState("");
-    
-
    function handleRemove(index) {
            setImages([
            ...images.slice(0,index), 
@@ -50,23 +32,7 @@ export default function Images() {
 
    }
 
-  /*  function handleAdd() {
-       
-       if(newImageUrl != ""){
-            setImages([newImageUrl, ...images,]);
-            setNewImageUrl("");
-       }
-       
-       //images.push();
-       //console.log(tempImage);
-
-   }
- */
-   /* function handleChange(event) {
-       setNewImageUrl(event.target.value);
-       //console.log(event.target.value);
-   } */
-
+ 
    
   return (
     <section>
@@ -87,27 +53,9 @@ export default function Images() {
             errors.length === 0 && (
                 <button onClick={()=>{setPage(page + 1)}}>Load More</button>
                 )
-                
+
         }
         
-             {/*  <div className="flex justify-between my-5">
-                <div className="w-full">
-                    <input type="text" 
-                    id="inputBox"
-                    ref={inputRef}
-                    className="p-2 border border-gray-800 shadow rounded w-full"
-                    value={newImageUrl}
-                    onChange = {handleChange}
-                    />
-                </div>
-
-                    <div className="">
-                        <button 
-                            disabled={newImageUrl == ""}
-                            className= {`p-2 text-white ml-2 ${newImageUrl != "" ? "bg-green-600": "bg-green-300"}`} 
-                            onClick={handleAdd}>Add</button>
-                    </div>    
-              </div>    */}
                        
        
 
