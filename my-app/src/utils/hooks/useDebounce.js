@@ -1,16 +1,14 @@
 import React from 'react'
 import { useState } from 'react/cjs/react.development';
 
-export default function useDebounce(func, wait=1000) {
+export default function useDebounce() {
  
     const [typingTimeout, setTypingTimeout] = useState("");
 
-    function debounce(text){
+    function debounce(func, wait=1000){
 
         clearTimeout(typingTimeout);
-        const timeout = setTimeout(() => {
-            func();//setSearchTerm(text);
-        }, wait );
+        const timeout = setTimeout(() => func() , wait );
         setTypingTimeout(timeout);
     }
 

@@ -55,15 +55,16 @@ export default function Images() {
                 }
 
             </InfiniteScroll>
-            )
+            );
 
    }
 
   
 const debounce = useDebounce();
+
  function handleInput(e){
      const text = e.target.value;
-    debounce( () => setSearchTerm(text), 1000)
+    debounce( () => setSearchTerm(text), 1000);
     
  }
   
