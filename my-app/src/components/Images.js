@@ -58,9 +58,16 @@ export default function Images() {
 
    }
 
- function handleInput(e){
+   const [typingTimeout, setTypingTimeout] = useState("");
 
-    setSearchTerm(e.target.value);
+ function handleInput(e){
+     const text = e.target.value;
+     clearTimeout(typingTimeout);
+    const timeout = setTimeout(() => {
+        setSearchTerm(text);
+    }, 1000 );
+    setTypingTimeout(timeout);
+    
  }
   
    
