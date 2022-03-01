@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import useDebounce from '../utils/hooks/useDebounce';
 import useFetchImage from "../utils/hooks/useFetchImage";
 //import useScroll from '../utils/hooks/useScroll';
 //import useScroll from "../utils/hooks/useScroll";
@@ -58,15 +59,11 @@ export default function Images() {
 
    }
 
-   const [typingTimeout, setTypingTimeout] = useState("");
-
+  
+const debounce = useDebounce();
  function handleInput(e){
      const text = e.target.value;
-     clearTimeout(typingTimeout);
-    const timeout = setTimeout(() => {
-        setSearchTerm(text);
-    }, 1000 );
-    setTypingTimeout(timeout);
+    debounce( () => setSearchTerm(text), 1000)
     
  }
   
