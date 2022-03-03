@@ -69,16 +69,16 @@ export default function useFetchImage(page, searchTerm) {
        } */
         
        fetch(res);
-    }, [page]);
+    }, [page, searchTerm]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         
         if(searchTerm === null) return;
         setIsLoading(true);
         fetch();
         //fetchSearch();
 
-    },[searchTerm]);
+    },[searchTerm]); */
 
 
   
