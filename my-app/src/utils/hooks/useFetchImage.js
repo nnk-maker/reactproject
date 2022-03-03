@@ -11,38 +11,72 @@ export default function useFetchImage(page, searchTerm) {
     const[images, setImages] = useState([]);
     const[errors, setErrors] = useState([]);
     const[isLoading, setIsLoading] = useState(false);
-    //console.log(searchTerm);
-    useEffect( () => {
-        setIsLoading(true);
-       // const url = searchTerm === null ? "photos" : "search/photos";
-        Axios.get(
-            `${api}/photos?client_id=${secret}&page=${page}`)
-            .then(res => {
-               
-                  setImages([...images, ...res.data]);
-                  setIsLoading(false);
-            //console.log(res.data);
-        } ).catch((e) => {
-                setErrors(["unable to fetch images"]);
-                setIsLoading(false);
-        });
 
-    }, [page]);
-
-    useEffect(() => {
+    function fetch(res){
         
-        if(searchTerm === null) return;
+        const url = searchTerm === null ? 'photos?' : `search/photos?query=${searchTerm}&`
         Axios.get(
-            `${api}/search/photos?client_id=${secret}&page=${page}&query=${searchTerm}`)
-            .then(res => {
+            `${api}/${url}client_id=${secret}&page=${page}`
+            ).then(res => {
+
+                if(searchTerm === null){
+                    fetchRandom(res);
+                } else {
+                    fetchSearch(res);
+                }
+
                
-                    setImages([...res.data.results]);
+                    
                     setIsLoading(false);
             //console.log(res.data);
         } ).catch((e) => {
                 setErrors(["unable to fetch images"]);
                 setIsLoading(false);
         });
+    }
+
+
+    function fetchSearch(res){
+
+       /*  Axios.get(
+            `${api}/search/photos?client_id=${secret}&page=${page}&query=${searchTerm}`
+            ) */
+            if(page > 1) {
+                setImages([...images,...res.data.results]);
+            } else {
+                setImages([...res.data.results]);
+            }
+           
+
+    }
+
+    function fetchRandom(res) {
+          
+
+                    setImages([...images, ...res.data]);
+                    //setIsLoading(false);
+          
+    }
+
+    //console.log(searchTerm);
+    useEffect( (res) => {
+        setIsLoading(true);
+       // const url = searchTerm === null ? "photos" : "search/photos";
+      /*  if(searchTerm != null) {
+            fetchSearch();
+       } else {
+            fetchRandom();
+       } */
+        
+       fetch(res);
+    }, [page]);
+
+    useEffect(() => {
+        
+        if(searchTerm === null) return;
+        setIsLoading(true);
+        fetch();
+        //fetchSearch();
 
     },[searchTerm]);
 
