@@ -19,15 +19,8 @@ export default function useFetchImage(page, searchTerm) {
             `${api}/${url}client_id=${secret}&page=${page}`
             ).then(res => {
 
-                if(searchTerm === null){
-                    fetchRandom(res);
-                } else {
-                    fetchSearch(res);
-                }
-
-               
-                    
-                    setIsLoading(false);
+                searchTerm === null ? fetchRandom(res) : fetchSearch(res);
+                setIsLoading(false);                               
             //console.log(res.data);
         } ).catch((e) => {
                 setErrors(["unable to fetch images"]);
@@ -41,11 +34,9 @@ export default function useFetchImage(page, searchTerm) {
        /*  Axios.get(
             `${api}/search/photos?client_id=${secret}&page=${page}&query=${searchTerm}`
             ) */
-            if(page > 1) {
-                setImages([...images,...res.data.results]);
-            } else {
-                setImages([...res.data.results]);
-            }
+            page > 1 ? setImages([...images,...res.data.results])
+            : setImages([...res.data.results]);
+            
            
 
     }
