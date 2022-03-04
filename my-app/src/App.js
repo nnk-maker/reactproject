@@ -34,16 +34,44 @@ function Gallery(){
     </p>
   );
 } */
+function Home() {
+  return ( 
+      <div className="flex h-screen">
+
+        <h1 className="m-auto text-3xl">Welcome Home</h1>
+
+      </div> 
+  );
+}
+
+function Login() {
+  return ( 
+      <div className="flex h-screen">
+
+        <h1 className="m-auto text-3xl">Login Page</h1>
+
+      </div> 
+  );
+}
+
+
+
 
  function App() {
     /* const [title, setTitle] = useState("Hellow React"); */
           
     return (
                 <Router>
-                  <Routes>
-                      <Route path="/gallery" element={<Gallery />} />
-                  </Routes>
-                    
+
+                    <Routes>
+
+                          <Route path="/" element={<Home />} exact={true}/>                   
+                      
+                          <Route path="/gallery"  element={<Gallery />} />
+
+                          <Route path="/login" element={<Login />} />
+
+                    </Routes>                                     
                    
                 </Router>
                   
