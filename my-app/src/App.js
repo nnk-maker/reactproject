@@ -1,8 +1,9 @@
 //import React, { useEffect, useRef, useState } from "react";
 import "./assets/css/style.css"
 import Images from "./components/Images";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
-import {BrowserRouter, BrowserRouter as Route, Routes} from  "react-router-dom";
+//import {BrowserRouter, BrowserRouter as Route, Link, Routes} from  "react-router-dom";
 
 function Gallery(){
 
@@ -25,15 +26,28 @@ function Gallery(){
 
 }
 
+/* function Home() {
+  return (
+    <p>
+      Home <Link to="/gallery">Gallery</Link>
+
+    </p>
+  );
+} */
+
  function App() {
     /* const [title, setTitle] = useState("Hellow React"); */
           
-    return (<BrowserRouter>
-                <Routes>
-                    <Route path="/gallery"  element={ <Gallery/>}/>
-                </Routes>
+    return (
+                <Router>
+                  <Routes>
+                      <Route path="/gallery" element={<Gallery />} />
+                  </Routes>
+                    
+                   
+                </Router>
                   
-          </BrowserRouter> );
+           );
     
 }  
 
