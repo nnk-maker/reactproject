@@ -2,6 +2,7 @@
 import "./assets/css/style.css"
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import routes from "./utils/routes";
+import Header from "./components/Header";
 
 
 //import {BrowserRouter, BrowserRouter as Route, Link, Routes} from  "react-router-dom";
@@ -23,13 +24,16 @@ import routes from "./utils/routes";
     return (
                 <Router>
 
-                    <Routes>
+                    <Header/>                
+                    <Routes>                    
 
                         {
 
-                          routes.map(route => (
+                          routes.map((route, index ) => (
 
-                            <Route path={route.path} 
+                            <Route 
+                                  key={index}
+                                  path={route.path} 
                                   exact={route.exact} 
                                   element={route.components}                                  
                                   />  
