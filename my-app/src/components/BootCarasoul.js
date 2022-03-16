@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import img1 from '../Images/one.jpg';
 import img2 from '../Images/two.jpg';
 import img3 from '../Images/three.jpg';
-import img4 from '../Images/four.jpg';
+//import img4 from '../Images/four.jpg';
 
 
 export default function BootCarasoul() {
@@ -15,7 +15,7 @@ export default function BootCarasoul() {
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src={img1}
+                      src = {img1}
                       alt="First slide"
                     />
                     <Carousel.Caption>
@@ -26,7 +26,7 @@ export default function BootCarasoul() {
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src={img2}
+                      src = {img2}
                       alt="Second slide"
                     />
                     <Carousel.Caption>
@@ -36,9 +36,9 @@ export default function BootCarasoul() {
                   </Carousel.Item>
                   <Carousel.Item>
                     <img
-                      className="d-block w-100"
-                      src={img3}
-                      alt="Third slide"
+                      className = "d-block w-100"
+                      src = {img3}
+                      alt = "Third slide"
                     />
                     <Carousel.Caption>
                       <h5>Third slide label</h5>

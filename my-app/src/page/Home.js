@@ -6,14 +6,14 @@ export default function Home() {
   return (
         <div className="flex h-screen">
 
-          <div>
+           <div>
             <BootCarasoul/>
 
-            </div>
+            </div> 
 
            {/*  <div>
 
-            <h1 className="m-auto text-3xl">Welcome Home</h1>
+                <h1 className="m-auto text-3xl">Welcome Home</h1>
 
             </div> */}
 
