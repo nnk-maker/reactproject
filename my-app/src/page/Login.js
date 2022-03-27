@@ -1,21 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+//import {firebase} from './Firbase/firebase';
+//import app from '../config/firebase';
+import { auth } from "../config/firebase";
 
-
+import app from 'firebase/compat/app';
 
 export default function Login() {
+    const [isLoading, setIsLoading] = useState(false);
+    
     function handleForm(e){
+
+        setIsLoading(true);
         e.preventDefault();
         //console.log("submitted");
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, "practiceappr@email.com", "password")
-        .then((userCredential) => {
-              // Signed in 
-            const user = userCredential.user;
-            
-            console.log("this is " + user);
-            // ...
-        })
+       // const auth = getAuth(app);
+        
+        try {
+          signInWithEmailAndPassword(auth, "krishna@email.com", "password").then(
+            (userCredential) => {
+
+                  setIsLoading(false);
+                  alert("signed in")
+                  const user = userCredential.user;
+
+                  console.log("this is the handleForm" + user);
+                  // ...
+                }
+              );
+            } 
+          catch (err) {
+              alert("error")
+              document.getElementById("demo").innerHTML = err.message;
+            }
 
     }
     return ( 
@@ -43,6 +60,7 @@ export default function Login() {
                 <div className="w-full my-10">
                   <button type="submit"
                           className="p-2 rounded shadow w-full bg-gradient-to-tr from-yellow-600 bg-yellow-400 text-black">
+                    
                     Login
                   </button>
                 </div>
