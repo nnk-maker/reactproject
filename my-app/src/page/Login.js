@@ -9,7 +9,7 @@ import { auth } from "../config/firebase";
 
 export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
-    
+    const [error, setError] = useState("");
     function handleForm(e){
       if (isLoading) return;
         setIsLoading(true);
@@ -36,11 +36,10 @@ export default function Login() {
                 
               } */
           ).catch ( (error) => {
-            console.log("this is error"+ error);
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);	  
+            //console.log("this is error"+ error);
+            setError(error.message);
+            setIsLoading(false);
+             
             // alert("error")
               //document.getElementById("demo").innerHTML = err.message;
           });
@@ -50,6 +49,7 @@ export default function Login() {
       <div className="flex h-screen bg-gray-200">  
           <div className="m-auto w-1/3 text-white flex flex-wrap justify-center shadow-lg rounded-lg bg-gradient-to-br from-indigo-900 to-indigo-700">            
             <form className="m-5 w-10/12" onSubmit={handleForm}>
+              {(error !== "") &&  <p>{error}</p>}
                 <h1 className="w-full text-4xl tracking-widest text-center my-6">
                     Login
                 </h1>  
