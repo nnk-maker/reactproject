@@ -11,14 +11,14 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     
     function handleForm(e){
-        if (isLoading) return;
+      if (isLoading) return;
         setIsLoading(true);
         e.preventDefault();
         //console.log("submitted");
        // const auth = getAuth(app);
         
-        
-          signInWithEmailAndPassword(auth, "krishna@email.com", "password")
+      
+          signInWithEmailAndPassword(auth, "krishna@email.com", "pasword")
           .then( (res) => {
             console.log(res);
             setIsLoading(false);
@@ -35,11 +35,15 @@ export default function Login() {
                   
                 
               } */
-          ).catch (err => {
-            console.log(err);
+          ).catch ( (error) => {
+            console.log("this is error"+ error);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);	  
             // alert("error")
               //document.getElementById("demo").innerHTML = err.message;
-          }) 
+          });
 
     }
     return ( 
