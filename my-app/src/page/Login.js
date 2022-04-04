@@ -11,17 +11,18 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     
     function handleForm(e){
-
+        if (isLoading) return;
         setIsLoading(true);
         e.preventDefault();
         //console.log("submitted");
        // const auth = getAuth(app);
         
-        try {
+        
           signInWithEmailAndPassword(auth, "krishna@email.com", "password")
           .then( (res) => {
             console.log(res);
-             setIsLoading(false);
+            setIsLoading(false);
+             
           } 
             /* (userCredential) => {
                  
@@ -34,12 +35,11 @@ export default function Login() {
                   
                 
               } */
-          );
-            } 
-          catch (err) {
-              alert("error")
-              document.getElementById("demo").innerHTML = err.message;
-            }
+          ).catch (err => {
+            console.log(err);
+            // alert("error")
+              //document.getElementById("demo").innerHTML = err.message;
+          }) 
 
     }
     return ( 
